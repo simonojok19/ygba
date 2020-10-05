@@ -36,6 +36,7 @@ public class CommunityWishesActivity extends AppCompatActivity implements  Adapt
     RadioGroup question1RadioGroup;
     Spinner quarterSpinner;
     Spinner financialSpinner;
+    Spinner sectorSpinner;
 
     EditText financialYear;
     TextView districtText;
@@ -49,8 +50,10 @@ public class CommunityWishesActivity extends AppCompatActivity implements  Adapt
 
     private final String[] quarterList = {"I", "II", "III", "IV", "V", "VI", "VII"};
     private final String[] financialYearList = {"2021/22", "2020/21", "2019/20"};
+    private final String[] sectorList = {"Agriculture Sector", "Health Sector", "Education Sector"};
     private String selectedQuarter;
     private String selectedFinancialYear;
+    private String selectedSector;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,6 +72,11 @@ public class CommunityWishesActivity extends AppCompatActivity implements  Adapt
         ArrayAdapter<String> fa=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, financialYearList);
         fa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         financialSpinner.setAdapter(fa);
+
+        sectorSpinner = findViewById(R.id.sector_spinner);
+        ArrayAdapter<String> sa=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sectorList);
+        fa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        financialSpinner.setAdapter(sa);
 
 
         villageEditText = findViewById(R.id.village_text_edit);
@@ -106,6 +114,8 @@ public class CommunityWishesActivity extends AppCompatActivity implements  Adapt
             selectedFinancialYear = financialYearList[position];
         } else if (view.getId() == R.id.quarter_spinner) {
             selectedQuarter = quarterList[position];
+        } else if (view.getId() == R.id.sector_spinner) {
+            selectedSector = sectorList[position];
         }
     }
 
